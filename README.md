@@ -5,13 +5,15 @@ With this app, a customer can create a wishlist
 
 ## Run Locally
 
+To run this app you must have python 3, docker and docker compose installed
+
 Clone the project
 
 ```bash
   git clone git@github.com:thaisbighetti/wishlist.git
 ```
 
-Run Web
+Run App
 
 ```bash
   docker compose up app

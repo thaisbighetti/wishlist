@@ -1,3 +1,4 @@
+import uuid
 from unittest.mock import ANY
 
 import pytest
@@ -104,5 +105,23 @@ class TestWishlist:
         user_token = baker.make(Token, user=User.objects.first())
 
         api_client.credentials(HTTP_AUTHORIZATION="Token " + user_token.key)
-        response = api_client.post(URL, data={"products": ["1"]})
+        response = api_client.post(URL, data={"products": [999]})
         assert response.status_code == 400
+
+    def test_should_not_add_if_item_not_exist(self, api_client):
+        customer = baker.make(Customer)
+        user_token = baker.make(Token, user=User.objects.first())
+        product = baker.make(Product)
+
+        api_client.credentials(HTTP_AUTHORIZATION="Token " + user_token.key)
+        response = api_client.post(
+            URL, data={"products": [product.id, str(uuid.uuid4())]}
+        )
+        assert response.status_code == 204
+        assert Wishlist.objects.filter(customer=customer, products=product).exists()
+        assert (
+            Wishlist.objects.get(customer=customer, products=product)
+            .products.all()
+            .count()
+            == 1
+        )

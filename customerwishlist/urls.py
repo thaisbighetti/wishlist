@@ -17,19 +17,20 @@ Including another URLconf
 
 from django.contrib import admin
 from django.template.defaulttags import url
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework import routers
 
-from wishlist.views import WishlistViewSet, ProductViewSet, CustomerViewSet, GetToken
+from wishlist.views import (CustomerViewSet, GetToken, ProductViewSet,
+                            WishlistViewSet)
 
 router = routers.SimpleRouter()
-router.register('api/v1/customer', CustomerViewSet, basename="customer")
-router.register('api/v1/product', ProductViewSet, basename="product")
-router.register('api/v1/wishlist', WishlistViewSet, basename="wishlist")
-router.register('api/v1/token', GetToken, basename="token")
+router.register("api/v1/customer", CustomerViewSet, basename="customer")
+router.register("api/v1/product", ProductViewSet, basename="product")
+router.register("api/v1/wishlist", WishlistViewSet, basename="wishlist")
+router.register("api/v1/token", GetToken, basename="token")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 urlpatterns += router.urls
