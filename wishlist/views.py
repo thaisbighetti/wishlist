@@ -30,7 +30,7 @@ class GetToken(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
 class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customer.objects.all()
+    queryset = Customer.objects.all().order_by("-created_at")
     http_method_names = ["post", "retrieve", "delete", "head", "patch"]
 
     def get_permissions(self, *args, **kwargs):
@@ -52,7 +52,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 
 class WishlistViewSet(viewsets.ModelViewSet):
     serializer_class = WishlistSerializer
-    queryset = Wishlist.objects.all()
+    queryset = Wishlist.objects.all().order_by("-created_at")
     permission_classes = [IsAuthenticated]
     http_method_names = ["post", "get", "retrieve", "head", "patch"]
 
@@ -66,6 +66,6 @@ class WishlistViewSet(viewsets.ModelViewSet):
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by("created_at")
     permission_classes = [IsAuthenticated]
     http_method_names = ["get", "retrieve", "head"]

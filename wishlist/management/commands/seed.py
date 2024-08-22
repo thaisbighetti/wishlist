@@ -45,6 +45,55 @@ class Command(BaseCommand):
                 image=None,
             )
 
+            baker.make(
+                Product,
+                title="Video game",
+                price=5000,
+                brand="Marca de video game legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="TV",
+                price=2000,
+                brand="Marca de TV legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="Geladeira",
+                price=3000,
+                brand="Marca de Geladeira legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="Fogão",
+                price=2000,
+                brand="Marca de Fogão legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="Maquina de lavar roupa",
+                price=2000,
+                brand="Marca de maquina de lavar roupa legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="Ventilador",
+                price=2000,
+                brand="Marca de ventilador legal",
+                image=None,
+            )
+            baker.make(
+                Product,
+                title="Ar condicionado",
+                price=2000,
+                brand="Marca de ar condicionado legal",
+                image=None,
+            )
             customer = baker.make(
                 Customer, email="email123@email.com", name="cara bacana"
             )

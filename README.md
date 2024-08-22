@@ -23,6 +23,7 @@ Run Tests
 ```
 ## API Reference
 
+Use file insomnia/wishlist_insomnia_doc.json to get all endpoints.
 #### Customer
 
 ```http
@@ -42,8 +43,9 @@ Run Tests
 
 ####  Wishlist
 ```http
-  GET/POST /wishlist/
+  POST /wishlist/
   data = {"products: ["id1", "id2"]}
+  GET /wishlist/
 ```
 
 #### Token
